@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Install GenOS
+Comment=Genesis OS Installer (abif)
+Exec=/usr/local/bin/apps_as_root.sh "terminator -T GenOS_Installer -e /abif-master/abif"
+Type=Application
+Icon=distributor-logo-archcraft
+Categories=System;Settings;

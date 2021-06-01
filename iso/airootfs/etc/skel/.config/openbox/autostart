@@ -1,0 +1,29 @@
+## Restore Wallpaper
+nitrogen --restore
+
+## xfce4-settings daemon
+xfsettingsd &
+
+## Start Compositing Manager
+exec compton &
+
+## Launch Polybar
+sh ~/.config/polybar/launch.sh
+
+## Launch Plank
+exec plank &
+
+## Start Music Player Daemon
+exec mpd &
+
+## Notification Daemon
+exec dunst &
+
+## Thunar Daemon
+exec thunar --daemon &
+
+## Enable power management
+xfce4-power-manager &
+
+## Adjust backlight (AMD)
+#blight -d amdgpu_bl0 set 20%

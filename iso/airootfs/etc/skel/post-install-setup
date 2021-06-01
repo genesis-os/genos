@@ -1,0 +1,233 @@
+#!/bin/bash
+
+## Post-install script for genos OS.
+
+## ANSI Colors (FG & BG)
+RED="$(printf '\033[31m')"  GREEN="$(printf '\033[32m')"  ORANGE="$(printf '\033[33m')"  BLUE="$(printf '\033[34m')"
+MAGENTA="$(printf '\033[35m')"  CYAN="$(printf '\033[36m')"  WHITE="$(printf '\033[37m')" BLACK="$(printf '\033[30m')"
+REDBG="$(printf '\033[41m')"  GREENBG="$(printf '\033[42m')"  ORANGEBG="$(printf '\033[43m')"  BLUEBG="$(printf '\033[44m')"
+MAGENTABG="$(printf '\033[45m')"  CYANBG="$(printf '\033[46m')"  WHITEBG="$(printf '\033[47m')" BLACKBG="$(printf '\033[40m')"
+
+## Directories
+DIR="$(pwd)"
+
+
+## Banner
+banner () {
+        banner_b64="CgoJIOKWiOKWiOKWiOKWiOKWiOKWiOKVlyDilojilojilojilojilojilojilojilZfilojilojilojilZcgICDilojilojilZcg4paI4paI4paI4paI4paI4paI4pWXIOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKVlwoJ4paI4paI4pWU4pWQ4pWQ4pWQ4pWQ4pWdIOKWiOKWiOKVlOKVkOKVkOKVkOKVkOKVneKWiOKWiOKWiOKWiOKVlyAg4paI4paI4pWR4paI4paI4pWU4pWQ4pWQ4pWQ4paI4paI4pWX4paI4paI4pWU4pWQ4pWQ4pWQ4pWQ4pWdCgnilojilojilZEgIOKWiOKWiOKWiOKVl+KWiOKWiOKWiOKWiOKWiOKVlyAg4paI4paI4pWU4paI4paI4pWXIOKWiOKWiOKVkeKWiOKWiOKVkSAgIOKWiOKWiOKVkeKWiOKWiOKWiOKWiOKWiOKWiOKWiOKVlwoJ4paI4paI4pWRICAg4paI4paI4pWR4paI4paI4pWU4pWQ4pWQ4pWdICDilojilojilZHilZrilojilojilZfilojilojilZHilojilojilZEgICDilojilojilZHilZrilZDilZDilZDilZDilojilojilZEKCeKVmuKWiOKWiOKWiOKWiOKWiOKWiOKVlOKVneKWiOKWiOKWiOKWiOKWiOKWiOKWiOKVl+KWiOKWiOKVkSDilZrilojilojilojilojilZHilZrilojilojilojilojilojilojilZTilZ3ilojilojilojilojilojilojilojilZEKCeKVmuKVkOKVkOKVkOKVkOKVkOKVnSDilZrilZDilZDilZDilZDilZDilZDilZ3ilZrilZDilZ0gIOKVmuKVkOKVkOKVkOKVnSDilZrilZDilZDilZDilZDilZDilZ0g4pWa4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWdCi0uXyAgICBfLi0tJyJgJy0tLl8gICAgXy4tLSciYCctLS5fICAgIF8uLS0nImAnLS0uXyAgICBfICAgCiAgICAnLTpgLid8YHwiJzotLiAgJy06YC4nfGB8Iic6LS4gICctOmAuJ3xgfCInOi0uICAnLmAgOiAnLiAgIAogICcuICAnLiAgfCB8ICB8IHwnLiAgJy4gIHwgfCAgfCB8Jy4gICcuICB8IHwgIHwgfCcuICAnLjogICAnLiAgJy4KICA6ICcuICAnLnwgfCAgfCB8ICAnLiAgJy58IHwgIHwgfCAgJy4gICcufCB8ICB8IHwgICcuICAnLiAgOiAnLiAgYC4KICAnICAgJy4gIGAuOl8gfCA6Xy4nICcuICBgLjpfIHwgOl8uJyAnLiAgYC46XyB8IDpfLicgJy4gIGAuJyAgIGAuCiAgICAgICAgIGAtLi4sLi4tJyAgICAgICBgLS4uLC4uLScgICAgICAgYC0uLiwuLi0nICAgICAgIGAgICAgICAgICBgCg=="
+    clear
+    cat <<- _EOF_
+                ${RED}          
+                `echo $banner_b64|base64 -d`
+										
+			${ORANGE}[*] ${CYAN}By: Ege BALCI
+			${ORANGE}[*] ${CYAN}Github: @egebalci
+			${ORANGE}[*] ${CYAN}Twitter: @egeblc
+_EOF_
+
+}
+
+## Reset terminal colors
+reset_color() {
+	tput sgr0   # reset attributes
+	tput op     # reset color
+    return
+}
+
+print_status() {
+	echo -n ${ORANGE}"[*] "
+	reset_color
+	echo $1  
+}
+
+print_error() {
+	echo -n ${RED}"[-] "
+	reset_color
+	echo $1
+}
+
+print_fatal() {
+	echo -e ${RED}"\n[!] $1\n"
+	reset_color
+	exit
+}
+
+
+print_good() {
+	echo -n ${GREEN}"[+] "
+	reset_color
+	echo $1
+}
+
+## Script Termination
+exit_on_signal_SIGINT () {
+    print_fatal "Script interrupted."
+    exit 0
+}
+
+exit_on_signal_SIGTERM () {
+    print_fatal "Script terminated."
+    exit 0
+}
+
+# START HERE
+banner
+
+# Install pacman packages...
+print_status "Installing pacman packages..."
+sudo pacman -Syy
+sudo pacman -S ranger alacritty bat flameshot tmux powerline-fonts mlocate docker docker-compose rdesktop rubygems remmina scapy upx xsel openssl traceroute ipcalc wine winetricks vlc transmission-gtk sshpass rsync lazygit keystone libreoffice-still irssi firefox opera torbrowser-launcher acpi thunderbird mattermost mumble telegram-desktop discord keybase dnscrypt-proxy openvpn apparmor keepassxc macchanger wireguard-dkms wireguard-tools sshuttle proxychains-ng tor metasploit whois routersploit nmap zmap hping hydra medusa smbclient john nikto reaver impacket aircrack-ng bettercap cadaver hashcat hashcat-utils sqlmap masscan sslscan slowhttptest evilginx exploitdb wpscan yara gdb nasm radare2 vbindiff foremost perl-image-exiftool hexedit bless volatility wireshark-qt ghidra jadx code go rust php7 nim ruby ipython python-virtualenv virtualbox virtualbox-host-dkms tree wget espeak speech-dispatcher
+
+# Install aur packages
+print_status "Installing aur packages..."
+yay -S opensnitch-git
+
+
+# Install vim plugins
+print_status "Installing vim plugins..."
+vim +PluginInstall +q +q
+
+# Settingup plymouth theme
+print_status "Setting up genos plymouth theme..."
+sudo mv /usr/share/plymouth-themes /usr/share/plymouth
+sudo plymouth-set-default-theme -R genos
+
+# Install GEF
+print_status "Installing GEF..."
+wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh
+
+# Install pipx
+print_status "Installing pip packages..."
+python3 -m pip install pipx
+pipx ensurepath
+
+# Get pip packages
+pipx install capstone
+pipx install filebytes
+pipx install keystone-engine
+pipx install ropper
+pipx install pysocks
+pipx install unicorn
+pipx install ldapdomaindump
+pipx install beautifulsoup4
+pipx install proxybroker
+pipx install crackmapexec
+pipx install pymultitor
+pipx install locustio
+pipx install shodan
+pipx install scapy
+pipx install oletools
+pipx install dirhunt
+
+# Install go apps
+print_status "Installing go packages..."
+go get -v github.com/egebalci/amber
+go get -v github.com/egebalci/sgn
+go get -v github.com/ffuf/ffuf
+go get -v github.com/OJ/gobuster
+go get -v github.com/jesseduffield/lazydocker
+go get -v github.com/jesseduffield/lazygit
+go get -v github.com/golang/dep/cmd/dep
+go get -v github.com/projectdiscovery/subfinder
+go get -v github.com/zricethezav/gitleaks
+go get -v github.com/bettercap/bettercap
+go get -v github.com/OWASP/Amass
+go get -v github.com/michenriksen/gitrob
+go get -v github.com/akavel/rsrc
+go get -v github.com/Ullaakut/cameradar
+go get -v github.com/koenrh/s3enum
+go get -v github.com/hsiafan/httpdump
+go get -v github.com/VirusTotal/vt-go
+go get -v github.com/egebalci/mappe
+go get -v github.com/rakyll/statik
+go get -v github.com/haccer/subjack
+go get -v github.com/whaler/whaler
+go get -v github.com/yudai/gotty
+go get -v github.com/sqshq/sampler
+go get -v github.com/cdr/sshcode
+go get -v github.com/sensepost/gowitness
+
+# Install gems
+print_status "Installing ruby gems..."
+gem install evil-winrm
+
+echo -n "[*] Do you want to install Git Arsenal ? [y/N]: "
+read choise
+if [[ $choise == "y" || $choise == "Y" ]] then;
+	print_status "Cloning git arsenal..."
+
+	# Now download the arsenal
+	mkdir -p ~/Toolkit
+	cd ~/Toolkit
+
+	git clone https://github.com/gocaio/goca
+	git clone https://github.com/x90skysn3k/brutespray
+	git clone https://github.com/jesparza/peepdf
+	git clone https://github.com/DanMcInerney/icebreaker
+	git clone https://github.com/DhavalKapil/icmptunnel
+	git clone https://github.com/ryhanson/phishery
+	git clone https://github.com/rapid7/IoTSeeker
+	git clone https://github.com/lgandx/Responder
+	git clone https://github.com/java-decompiler/jd-gui
+	git clone https://github.com/reverse-shell/routersploit
+	git clone https://github.com/nccgroup/demiguise
+	git clone https://github.com/joaomatosf/jexboss
+	git clone https://github.com/pxb1988/dex2jar
+	git clone https://github.com/BC-SECURITY/Empire
+	git clone https://github.com/internetwache/GitTools
+	git clone https://github.com/valyala/goloris
+	git clone https://github.com/rezasp/joomscan
+	git clone https://github.com/Cn33liz/JSMeter
+	git clone https://github.com/JusticeRage/Manalyze
+	git clone https://github.com/responsibleD/memcached-PoC
+	git clone https://github.com/gentilkiwi/mimikatz
+	git clone https://github.com/secretsquirrel/SigThief
+	git clone https://github.com/paranoidninja/CarbonCopy
+	git clone https://github.com/shekyan/slowhttptest
+	git clone https://github.com/sqlmapproject/sqlmap
+	git clone https://github.com/haccer/subjack
+	git clone https://github.com/laramies/theHarvester
+	git clone https://github.com/egebalci/Ticketbleed
+	git clone https://github.com/botherder/virustotal
+	git clone https://github.com/BlackArch/webshells
+	git clone https://github.com/derv82/wifite2
+	git clone https://github.com/browsh-org/browsh
+	git clone https://github.com/maurosoria/dirsearch
+	git clone https://github.com/epinna/tplmap
+	git clone https://github.com/frohoff/ysoserial	
+	git clone https://github.com/1N3/HTTPoxyScan
+	git clone https://github.com/D4Vinci/Cr3dOv3r
+	git clone https://github.com/BloodHoundAD/BloodHound
+	git clone https://github.com/woj-ciech/kamerka
+	git clone https://github.com/thewhiteh4t/pwnedOrNot
+	git clone https://github.com/ShawnDEvans/smbmap
+	git clone https://github.com/s0md3v/Photon
+	git clone https://github.com/3gstudent/Worse-PDF
+	git clone https://github.com/walletgeneratornet/WalletGenerator.net
+	git clone https://github.com/codilime/veles
+	git clone https://github.com/fireeye/speakeasy
+	git clone https://github.com/sherlock-project/sherlock
+	git clone https://github.com/RUB-NDS/PRET
+	git clone https://github.com/phra/PEzor
+	git clone https://github.com/munin-monitoring/munin
+	git clone https://github.com/gentilkiwi/mimikatz
+	git clone https://github.com/rapid7/mettle
+	git clone https://github.com/alexandreborges/malwoverview
+	git clone https://github.com/sevagas/macro_pack
+	git clone https://github.com/foxlet/macOS-Simple-KVM
+	git clone https://github.com/hashcat/hashcat-utils
+	git clone https://github.com/ZerBea/hcxtools\
+	git clone https://github.com/BishopFox/GitGot
+	git clone https://github.com/fireeye/flare-floss
+	git clone https://github.com/Findomain/Findomain
+	git clone https://github.com/Hackplayers/evil-winrm
+	git clone https://github.com/outflanknl/EvilClippy
+	git clone https://github.com/egebalci/zippo
+	git clone https://github.com/TheWover/donut
+	git clone https://github.com/gchq/CyberChef
+	git clone https://github.com/Tib3rius/AutoRecon
+fi
+
+
+
+

@@ -1,0 +1,384 @@
+##-------- Base Packages --------##
+# SPDX-License-Identifier: GPL-3.0-or-later
+linux
+linux-headers
+linux-hardened
+linux-hardened-headers
+linux-atm
+linux-firmware
+amd-ucode
+arch-install-scripts
+b43-fwcutter
+base
+bind-tools
+broadcom-wl
+btrfs-progs
+clonezilla
+crda
+darkhttpd
+ddrescue
+dhclient
+dhcpcd
+diffutils
+dialog
+dmraid
+dnsmasq
+dnsutils
+dosfstools
+edk2-shell
+efibootmgr
+ethtool
+exfatprogs
+f2fs-tools
+fsarchiver
+gnu-netcat
+gpm
+gptfdisk
+haveged
+hdparm
+intel-ucode
+ipw2100-fw
+ipw2200-fw
+iwd
+jfsutils
+kitty-terminfo
+lftp
+lsscsi
+lvm2
+lynx
+man-db
+man-pages
+mc
+mdadm
+mkinitcpio
+mkinitcpio-archiso
+mkinitcpio-nfs-utils
+mtools
+nano
+nbd
+ndisc6
+nfs-utils
+nilfs-utils
+ntfs-3g
+nvme-cli
+ntp
+openconnect
+openssh
+partclone
+parted
+partimage
+ppp
+pptpclient
+reflector
+reiserfsprogs
+rp-pppoe
+rsync
+rxvt-unicode-terminfo
+sdparm
+sg3_utils
+smartmontools
+sudo
+syslinux
+systemd-resolvconf
+tcpdump
+terminus-font
+termite-terminfo
+testdisk
+usb_modeswitch
+usbutils
+vpnc
+wireless-regdb
+wireless_tools
+wpa_supplicant
+wvdial
+xfsprogs
+xl2tpd
+tree
+zsh
+socat
+i3-wm
+i3lock
+libindicator-gtk3
+# memtest86+
+# exfat-utils
+
+
+##-------- Xorg Packages --------##
+xorg-server
+xorg-xbacklight
+xorg-fonts-misc
+xorg-xfd
+xorg-xkill
+xorg-xrandr
+xorg-xrdb
+xorg-xset
+
+##-------- Touchpad and Mouse --------##
+xorg-xinput
+xf86-input-libinput
+#xf86-input-synaptics
+#xf86-input-vmmouse
+#xf86-input-void
+#xf86-input-wacom
+
+##-------- GPU Drivers (Intel/AMD/Nvidia) --------##
+xf86-video-fbdev
+xf86-video-vesa
+xf86-video-intel
+xf86-video-amdgpu
+xf86-video-ati
+xf86-video-nouveau
+nvidia
+
+##-------- Networking --------##
+networkmanager
+nm-connection-editor
+networkmanager-openvpn
+
+##-------- Openbox --------##
+obconf
+openbox
+adapta-gtk-theme
+
+##-------- Bspwm --------##
+bspwm
+sxhkd
+arc-gtk-theme
+arc-icon-theme
+
+##-------- Programs --------##
+alsa-plugins
+alsa-tools
+alsa-utils
+atril
+autoconf
+automake
+binutils
+bison
+bmon
+calc
+dunst
+fakeroot
+feh
+ffmpeg
+ffmpegthumbnailer
+gcc
+clang
+cmake
+geany
+geany-plugins
+gparted
+gst-libav
+gst-plugins-bad
+gst-plugins-base
+gst-plugins-good
+gst-plugins-ugly
+gtk-engine-murrine
+gvfs
+gvfs-mtp
+htop
+imagemagick
+inetutils
+jq
+leafpad
+lxappearance
+lxdm-gtk3
+make
+mpc
+mpd
+mplayer
+ncdu
+ncmpcpp
+nitrogen
+noto-fonts
+os-prober
+p7zip
+patch
+pcmanfm
+pkg-config
+plank
+polkit
+powertop
+pulseaudio
+pulseaudio-alsa
+pulseaudio-equalizer-ladspa
+pavucontrol
+pv
+terminus-font
+thunar
+thunar-archive-plugin
+thunar-media-tags-plugin
+thunar-volman
+ttf-dejavu
+tumbler
+udisks2
+unrar
+unzip
+viewnior
+wget
+xarchiver
+xclip
+xdg-user-dirs
+xfce4-power-manager
+xfce4-settings
+xmlstarlet
+yad
+zip
+w3m
+rofi
+git
+terminator
+ripgrep
+grub
+# espeak
+# speech-dispatcher
+# ranger
+# alacritty
+# bat
+# flameshot
+# tmux
+# powerline-fonts
+# mlocate
+# docker
+# docker-compose
+# rdesktop
+# remmina
+# scapy
+# upx
+# xsel
+# openssl
+# traceroute
+# ipcalc
+# wine
+# winetricks
+# vlc
+# transmission-gtk
+# sshpass
+# rsync
+# lazygit
+# keystone
+# libreoffice-still
+# irssi
+
+##-------- Calamares Installer --------## 
+kconfig
+kcoreaddons
+kiconthemes
+ki18n
+kio
+solid
+yaml-cpp
+kpmcore
+boost-libs
+hwinfo
+qt5-svg
+polkit-qt5
+gtk-update-icon-cache
+plasma-framework
+qt5-xmlpatterns
+squashfs-tools
+extra-cmake-modules
+qt5-tools
+qt5-translations
+git
+boost
+
+##-------- Browsers --------##
+chromium
+# firefox
+# opera
+# torbrowser-launcher
+
+##-------- Coms. --------##
+# thunderbird
+# mattermost
+# mumble
+# telegram-desktop
+# discord
+# keybase
+
+##-------- OPSEC Tools --------##
+ufw
+apparmor
+firejail
+dnscrypt-proxy
+# openvpn
+# keepassxc
+# macchanger
+# wireguard-dkms
+# wireguard-tools
+# sshuttle
+# proxychains-ng
+# tor
+# veracrypt
+
+##-------- Offensive Tools --------##
+# metasploit
+# routersploit
+# nmap
+# zmap
+# hping
+# hydra
+# medusa
+# smbclient
+# john
+# nikto
+# reaver
+# impacket
+# aircrack-ng
+# bettercap
+# cadaver
+# hashcat
+# hashcat-utils
+# sqlmap
+# masscan
+# sslscan
+# slowhttptest
+# evilginx
+# exploitdb
+# wpscan
+
+##-------- Analysis Tools --------##
+# yara
+# gdb
+# nasm
+# radare2
+# vbindiff
+# foremost
+# perl-image-exiftool
+# hexedit
+# bless
+# volatility
+# wireshark-qt
+# ghidra
+# jadx
+
+##-------- Editors --------##
+# code
+vim
+
+##-------- Languages --------##
+# go
+# rust
+# php7
+# nim
+# ruby
+# ipython
+# python-virtualenv
+
+##-------- Virtual Box --------##
+virtualbox-guest-dkms
+virtualbox-guest-utils
+# virtualbox
+# virtualbox-host-dkms
+
+##-------- AUR Packages --------##
+yay
+plymouth
+polybar
+blight
+i3lock-color
+networkmanager-dmenu-git
+opensnitch-git
+# grub-silent
+# opensnitch-git

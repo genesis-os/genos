@@ -1,0 +1,21 @@
+[global_config]
+  window_state = maximise
+[keybindings]
+  split_horiz = <Primary><Shift>F11
+  split_vert = <Primary><Shift>F12
+[profiles]
+  [[default]]
+    cursor_color = "#aaaaaa"
+    font = Source Code Pro 15
+    show_titlebar = False
+    scrollbar_position = hidden
+    use_system_font = False
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]
